@@ -1,0 +1,24 @@
+# MS-Road Examples Requirements
+# =============================
+
+# Core dependencies
+numpy>=1.20.0
+matplotlib>=3.3.0
+pillow>=8.0.0
+
+# Deep learning (optional, for training)
+torch>=1.9.0
+torchvision>=0.10.0
+
+# Detection frameworks (optional)
+# mmdet>=2.25.0
+# mmcv-full>=1.5.0
+# ultralytics>=8.0.0
+
+# Data processing
+opencv-python>=4.5.0
+pycocotools>=2.0.0
+tqdm>=4.60.0
+
+# Visualization
+seaborn>=0.11.0

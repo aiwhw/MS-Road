@@ -1,0 +1,55 @@
+================================================================================
+MS-Road Dataset Download Links
+================================================================================
+
+The MS-Road dataset is available for download through the following channels.
+
+================================================================================
+Baidu Netdisk (百度网盘)
+================================================================================
+
+Link: https://pan.baidu.com/s/1INry2A1PY8H-GUL3pH9MAA
+Extraction Code (提取码): ywfs
+
+Contents:
+- MSOD-R.zip: Complete MS-Road dataset
+  * Training set: 34,520 images with annotations
+  * Test set: 14,733 images with annotations
+  * Total: 49,253 images, 512,194 instances
+
+================================================================================
+Google Drive (Coming Soon)
+================================================================================
+
+Google Drive mirror will be available soon.
+
+================================================================================
+Data Format
+================================================================================
+
+All images are provided in NumPy (.npy) format:
+- Shape: (8, 1200, 900)  [Channels, Width, Height]
+- 8 spectral bands: 395-950 nm
+- Resolution: 1200 x 900 pixels
+
+For usage examples, please refer to the README.md and examples/ directory.
+
+================================================================================
+Terms of Use
+================================================================================
+
+By downloading and using the MS-Road dataset, you agree to:
+1. Use the dataset for research purposes only
+2. Cite our paper in any published work using this dataset
+3. Not redistribute the dataset without permission
+4. Comply with the CC BY 4.0 License
+
+================================================================================
+Contact
+================================================================================
+
+For any questions regarding the dataset or download issues, please:
+- Open an issue on GitHub: https://github.com/aiwhw/MS-Road/issues
+- Contact the authors through the paper
+
+================================================================================

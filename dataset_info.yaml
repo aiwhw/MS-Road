@@ -1,0 +1,176 @@
+# MS-Road Dataset Information
+# A Large-Scale Multispectral Benchmark for Road Object Detection
+
+# =============================================================================
+# Dataset Overview
+# =============================================================================
+dataset_name: "MS-Road"
+version: "1.0"
+release_year: 2026
+institution: "Beijing Institute of Technology"
+
+# =============================================================================
+# Data Statistics
+# =============================================================================
+statistics:
+  total_images: 49253
+  total_instances: 512194
+  train_images: 34520
+  test_images: 14733
+  train_test_ratio: "7:3"
+
+# =============================================================================
+# Image Specifications
+# =============================================================================
+image_specifications:
+  format: "npy"  # NumPy array format
+  # IMPORTANT: Shape is (C, W, H) NOT (C, H, W)
+  # When loading with numpy: data = np.load('xxx.npy')  # shape: (8, 1200, 900)
+  shape:
+    channels: 8
+    width: 1200
+    height: 900
+  spatial_resolution: "1200 x 900"
+  spectral_bands:
+    - band: 1
+      wavelength_nm: 395
+      name: "Near-UV"
+    - band: 2
+      wavelength_nm: 450
+      name: "Blue"
+    - band: 3
+      wavelength_nm: 525
+      name: "Green"
+    - band: 4
+      wavelength_nm: 590
+      name: "Yellow"
+    - band: 5
+      wavelength_nm: 650
+      name: "Red"
+    - band: 6
+      wavelength_nm: 730
+      name: "Red Edge"
+    - band: 7
+      wavelength_nm: 850
+      name: "NIR-1"
+    - band: 8
+      wavelength_nm: 950
+      name: "NIR-2"
+  wavelength_range: "395-950 nm"
+
+# =============================================================================
+# Categories
+# =============================================================================
+categories:
+  - id: 1
+    name: "person"
+  - id: 2
+    name: "bike"
+  - id: 3
+    name: "car"
+  - id: 4
+    name: "bus"
+  - id: 5
+    name: "truck"
+  - id: 6
+    name: "tricycle"
+  - id: 7
+    name: "van"
+  - id: 8
+    name: "traffic light"
+  - id: 9
+    name: "traffic sign"
+
+num_classes: 9
+
+# =============================================================================
+# Road Types
+# =============================================================================
+road_types:
+  - expressway
+  - highway
+  - side road
+  - town road
+  - rural road
+  - village road
+  - mountain road
+
+# =============================================================================
+# Challenging Conditions
+# =============================================================================
+challenging_conditions:
+  - adverse weather
+  - overexposure
+  - low illumination
+  - severe occlusion
+  - extremely small objects
+  - shadow interference
+  - high-density traffic
+
+# =============================================================================
+# Acquisition Equipment
+# =============================================================================
+acquisition:
+  camera: "MAIA Multispectral Camera"
+  camera_reference: "Nocerino et al., Geometric calibration of a multispectral camera, 2017"
+  mounting_height_m: 1.5
+  platform: "Vehicle-mounted"
+  synchronization: "Synchronized multi-band acquisition"
+  cross_channel_alignment: "Accurate cross-channel alignment ensured"
+
+# =============================================================================
+# Annotation Format
+# =============================================================================
+annotation:
+  format: "COCO JSON"
+  bbox_format: "xywh"  # [x, y, width, height]
+  quality_control: "Multi-stage pipeline with algorithmic pre-labeling, manual correction, and expert verification"
+  annotation_tool: "X-AnyLabeling"
+  num_annotators: 16
+  num_experts: 4
+
+# =============================================================================
+# Dataset Split Strategy
+# =============================================================================
+split_strategy:
+  method: "Sequence-level split"
+  description: "All frames from the same continuous driving sequence are assigned exclusively to either training or testing set"
+  temporal_leakage_prevention: true
+  stratified_balancing: true
+  balancing_factors:
+    - categories
+    - road types
+    - challenging conditions
+
+# =============================================================================
+# RGB Synthesis for Comparison
+# =============================================================================
+rgb_synthesis:
+  description: "Pseudo-RGB images can be synthesized from multispectral data for comparison"
+  band_mapping:
+    R: 5  # Red channel uses band 5 (650nm)
+    G: 3  # Green channel uses band 3 (525nm)
+    B: 2  # Blue channel uses band 2 (450nm)
+
+# =============================================================================
+# Important Notes for Users
+# =============================================================================
+notes:
+  - "Data format is .npy (NumPy array)"
+  - "Array shape is (8, 1200, 900) - (Channels, Width, Height) NOT (C, H, W)"
+  - "When loading: data = np.load('xxx.npy') # Returns array with shape (8, 1200, 900)"
+  - "For visualization, use band indices 0-7 corresponding to 8 spectral bands"
+  - "For model input, ensure correct dimension ordering according to your framework"
+
+# =============================================================================
+# Citation
+# =============================================================================
+citation:
+  bibtex: |
+    @inproceedings{gao2026msroad,
+      title={MS-Road: A Large-Scale Challenging Benchmark for Multispectral Road Object Detection},
+      author={Gao, Huawei and Xu, Tingfa and Liu, Peifu and Li, Tianhao and Chen, Huan and Li, Jianan},
+      booktitle={Proceedings of the 34th ACM International Conference on Multimedia},
+      year={2026},
+      organization={ACM}
+    }
